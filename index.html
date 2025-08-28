@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BlueAura - Where Comfort Meets Style</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="favicon.png" type="image/png" />
+  <link rel="stylesheet" href="style.css" />
+ 
+</head>
+<body>
+  <header>
+    <div class="logo-placeholder"></div>
+    <h1>BlueAura</h1>
+    <p>Where Comfort Meets Style!</p>
+  </header>
+
+
+  <header class="navbar">
+  <div class="brand-logo">
+    <img src="#" alt="BlueAura Logo" class="logo">
+    <span>BlueAura</span>
+  </div>
+  <nav class="nav-links">
+    <a href="#home">Home</a>
+    <a href="#products">Products</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </nav>
+<a href="cart.html" class="cart-icon">
+  🛒 <span id="cart-count">0</span>
+</a>
+
+
+</header>
+
+
+   
+
+  <!-- Slideshow Section -->
+<div class="slideshow">
+    <button class="nav prev">&#10094;</button>
+    <button class="nav next">&#10095;</button>
+
+<div class="slideshow">
+  <div class="slides">
+    <img src="C:\Users\AMAN\Pictures\8a077cfaef9dc5b32dbf503c23932096.jpg" alt="Product Image 1" class="aura-slide active">
+    <img src="C:\Users\AMAN\Pictures\25cdd671a3692ee428b0e8785d5255d3.jpg" alt="Product Image 2" class="aura-slide">
+    <img src="C:\Users\AMAN\Pictures\150ec1e72b9a1a540802e459dde42fd7.jpg" alt="Product Image 3" class="aura-slide">
+    <img src="C:\Users\AMAN\Pictures\378a4fa8ca55692dcc5a0cee2d96f68d.jpg" alt="Product Image 3" class="aura-slide">
+    <img src="C:\Users\AMAN\Pictures\28855fc598f8e716a63fa39312b62c1e.jpg" alt="Product Image 3" class="aura-slide">
+    <img src="C:\Users\AMAN\Pictures\c90b25790adeb07f6c22760b5380dfb4.jpg" alt="Product Image 3" class="aura-slide">
+  </div>
+</div>
+      
+        <div class="dots">
+      <span class="dot active-dot" data-index="0"></span>
+      <span class="dot" data-index="1"></span>
+      <span class="dot" data-index="2"></span>
+      <span class="dot" data-index="3"></span>
+      <span class="dot" data-index="4"></span>
+      <span class="dot" data-index="5"></span>
+    </div>
+  </div>
+
+ 
+       <section id="products" class="page-section">
+           <hr> <center><h2>Our Products</h2></center>
+                
+                <div class="filter-buttons">
+  <button onclick="filterProducts('all')" class="active">All</button>
+  <button onclick="filterProducts('jeans')">Jeans</button>
+  <button onclick="filterProducts('tshirt')">T-Shirts</button>
+  <button onclick="filterProducts('jacket')">Jackets</button>
+</div>
+
+  <div class="product-grid">
+    <!-- Product Cards -->
+      <div class="product-card"  data-category="jeans">
+      <img src="images/Bootcut-Jeans.jpg" alt="Bootcut Jeans">
+      <h3 id="quickViewTitle">Bootcut Jeans</h3>
+         <p>Comfort-fit, stylish denim for everyday wear.</p>
+<label for="size-Bootcut Jeans">Size:</label>
+  <select id="size-Bootcut Jeans">
+    <option>S</option>
+    <option>M</option>
+    <option>L</option>
+    <option>XL</option>
+  </select>
+
+<div class="color-options" id="color-options-Bootcut Jeans">
+  <span class="color-circle" data-color="Black" style="background: black;"></span>
+  <span class="color-circle" data-color="Brown" style="background: saddlebrown;"></span>
+  <span class="color-circle" data-color="Blue" style="background: steelblue;"></span>
+</div>
+<input type="hidden" id="color-Bootcut Jeans" value="Black">
+
+<button class="buy-btn" onclick="openQuickView('images/Bootcut-Jeans.jpg', 'Bootcut Jeans', ' Characterized by a gradual widening of the leg from the knee down, creating a subtle flare that accommodates boots. They offer a balanced silhouette and are versatile for various body types and occasions, bridging the gap between straight-leg and flared styles. ')">Quick View</button>
+                     <label for="qty-Bootcut Jeans">Quantity:</label>
+                  <select id="qty-Bootcut Jeans">
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                </select>
+   <button class="add-cart-btn" onclick="addToCartWithVariant('Bootcut Jeans', 'images/Bootcut-Jeans.jpg', 900, 'size-Bootcut Jeans', 'color-Bootcut Jeans', 'qty-Bootcut Jeans')">Add to Cart</button>
+   <a href="product-bootcut-jeans.html">
+  <button class="buy-btn">View Details</button>
+</a>
+
+    </div>
+       
+       <div class="product-card"  data-category="jeans">
+      <img src="images/Uniqlo Wide.jpg" alt="Uniqlo Wide">
+      <h3 id="quickViewTitle">Uniqlo Wide</h3>
+         <p>Comfort-fit, stylish jeans for everyday wear.</p>
+
+<label for="size-Uniqlo Wide">Size:</label>
+  <select id="size-Uniqlo Wide">
+    <option>S</option>
+    <option>M</option>
+    <option>L</option>
+    <option>XL</option>
+  </select>
+<div class="color-options" id="color-options-Uniqlo Wide">
+  <span class="color-circle" data-color="Black" style="background: black;"></span>
+  <span class="color-circle" data-color="Brown" style="background: saddlebrown;"></span>
+  <span class="color-circle" data-color="Blue" style="background: steelblue;"></span>
+</div>
+<input type="hidden" id="color-Uniqlo Wide" value="Black">
+         <button class="buy-btn" onclick="openQuickView('images/Uniqlo Wide.jpg', 'Uniqlo Wide', 'A style of pants with a wider leg opening, offered by the Japanese clothing retailer Uniqlo.')">Quick View</button>
+                    <label for="qty-Uniqlo Wide">Quantity:</label>
+                  <select id="qty-Uniqlo Wide">
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                </select>
+         <button class="add-cart-btn" onclick="addToCartWithVariant('Uniqlo Wide', 'images/Uniqlo Wide.jpg', 999, 'size-Uniqlo Wide', 'color-Uniqlo Wide', 'qty-Uniqlo Wide')">Add to Cart</button>
+         <a href="product-uniqlo-wide.html">
+  <button class="buy-btn">View Details</button>
+</a>
+
+    </div>
+
+     <div class="product-card"  data-category="jeans">
+      <img src="images/Denim Tapered.jpg" alt="Denim Tapered">
+      <h3 id="quickViewTitle">Denim Tapered</h3>
+         <p>Comfort-fit, stylish jeans for everyday wear.</p>
+<label for="size-Denim Tapered">Size:</label>
+  <select id="size-Denim Tapered">
+    <option>S</option>
+    <option>M</option>
+    <option>L</option>
+    <option>XL</option>
+  </select>
+
+ <div class="color-options" id="color-options-Denim Tapered">
+  <span class="color-circle" data-color="Black" style="background: black;"></span>
+  <span class="color-circle" data-color="Brown" style="background: saddlebrown;"></span>
+  <span class="color-circle" data-color="Blue" style="background: steelblue;"></span>
+</div>
+<input type="hidden" id="color-Denim Tapered" value="Black">
+         <button class="buy-btn" onclick="openQuickView('images/Denim Tapered.jpg', 'Denim Tapered', 'Characterized by a fit that's roomier at the waist and hips, gradually narrowing towards the ankles.')">Quick View</button>
+                       <label for="qty-Denim Tapered">Quantity:</label>
+                  <select id="qty-Denim Tapered">
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                </select>
+         <button class="add-cart-btn" onclick="addToCartWithVariant('Denim Tapered','images/Denim Tapered.jpg', 599, 'size-Denim Tapered', 'color-Denim Tapered', 'qty-Denim Tapered')">Add to Cart</button>
+         <a href="product-denim-tapered.html">
+  <button class="buy-btn">View Details</button>
+</a>
+
+    </div>
+
+
+<div class="product-card" data-category="tshirt">
+      <img src="images/Graphic T-Shirt.jpg" alt="Graphic T-Shirt">
+          <h3 id="quickViewTitle">Graphic T-Shirt</h3>
+        <p>Breathable cotton t-shirts in trendy colors.</p>
+
+<label for="size-Graphic T-Shirt">Size:</label>
+  <select id="size-Graphic T-Shirt">
+    <option>S</option>
+    <option>M</option>
+    <option>L</option>
+    <option>XL</option>
+  </select>
+
+  <div class="color-options" id="color-options-Graphic T-Shirt">
+  <span class="color-circle" data-color="Black" style="background: black;"></span>
+  <span class="color-circle" data-color="Brown" style="background: saddlebrown;"></span>
+  <span class="color-circle" data-color="Blue" style="background: steelblue;"></span>
+</div>
+<input type="hidden" id="color-Graphic T-Shirt" value="Black">
+
+         <button class="buy-btn" onclick="openQuickView('images/Graphic T-Shirt.jpg', 'Graphic T-Shirt', 'Breathable cotton t-shirts in trendy colors.')">Quick View</button>
+                  <label for="qty-Graphic T-Shirt">Quantity:</label>
+                  <select id="qty-Graphic T-Shirt">
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                </select>
+         <button class="add-cart-btn" onclick="addToCartWithVariant('Graphic T-Shirt','images/Graphic T-Shirt.jpg', 899, 'size-Graphic T-Shirt', 'color-Graphic T-Shirt', 'qty-Graphic T-Shirt')">Add to Cart</button>
+         <a href="product-graphic-tee.html">
+  <button class="buy-btn">View Details</button>
+</a>
+
+ 
+
+    </div>
+
+       <div class="product-card" data-category="tshirt">
+      <img src="images/Hooded T-shirts.jpg" alt="Hooded T-shirts">
+          <h3 id="quickViewTitle">Hooded T-shirts</h3>
+        <p>Breathable cotton t-shirts in trendy colors.</p>
+
+<label for="size-Hooded T-shirts">Size:</label>
+  <select id="size-Hooded T-shirts">
+    <option>S</option>
+    <option>M</option>
+    <option>L</option>
+    <option>XL</option>
+  </select>
+
+  <div class="color-options" id="color-options-Hooded T-shirts">
+  <span class="color-circle" data-color="Black" style="background: black;"></span>
+  <span class="color-circle" data-color="Brown" style="background: saddlebrown;"></span>
+  <span class="color-circle" data-color="Blue" style="background: steelblue;"></span>
+</div>
+<input type="hidden" id="color-Hooded T-shirts" value="Black">
+
+         <button class="buy-btn" onclick="openQuickView('images/Hooded T-shirts.jpg', 'Hooded T-shirts', 'A sweatshirt (= cotton clothing for the upper body) that has a hood to cover the head.')">Quick View</button>
+                      <label for="qty-Hooded T-shirts">Quantity:</label>
+                  <select id="qty-Hooded T-shirts">
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                </select>
+         <button class="add-cart-btn" onclick="addToCartWithVariant('Hooded T-shirts', 'images/Hooded T-shirts.jpg', 699, 'size-Hooded T-shirts', 'color-Hooded T-shirts', 'qty-Hooded T-shirts')">Add to Cart</button>
+         <a href="product-hooded-tee.html">
+  <button class="buy-btn">View Details</button>
+</a>
+
+    </div>
+
+    <div class="product-card" data-category="jacket">
+         <img src="images/Trench Coat.jpg" alt="Trench Coat Jacket">
+             <h3 id="quickViewTitle">Trench Coat Jacket</h3>
+         <p>Stylish outerwear for all seasons.</p>
+<label for="size-Trench Coat Jacket">Size:</label>
+  <select id="size-Trench Coat Jacket">
+    <option>S</option>
+    <option>M</option>
+    <option>L</option>
+    <option>XL</option>
+  </select>
+
+<div class="color-options" id="color-options-Trench Coat Jacket">
+  <span class="color-circle" data-color="Black" style="background: black;"></span>
+  <span class="color-circle" data-color="Brown" style="background: saddlebrown;"></span>
+  <span class="color-circle" data-color="Blue" style="background: steelblue;"></span>
+</div>
+<input type="hidden" id="color-Trench Coat Jacket" value="Black">
+
+         <button class="buy-btn" onclick="openQuickView('images/Trench Coat.jpg', 'Trench Coat Jacket', 'Stylish outerwear for all seasons.')">Quick View</button>
+                     <label for="qty-Trench Coat Jacket">Quantity:</label>
+                  <select id="qty-Trench Coat Jacket">
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                </select>
+         <button class="add-cart-btn" onclick="addToCartWithVariant('Trench Coat Jacket','images/Trench Coat.jpg', 799, 'size-Trench Coat Jacket', 'color-Trench Coat Jacket', 'qty-Trench Coat Jacket')">Add to Cart</button>
+         <a href="product-trench-coat.html">
+  <button class="buy-btn">View Details</button>
+</a>
+
+    </div>
+
+       
+    <div class="product-card" data-category="jacket">
+         <img src="images/Harrington Jacket.jpg" alt="Harrington Jacket">
+             <h3 id="quickViewTitle">Harrington Jacket</h3>
+         <p>Stylish outerwear for all seasons.</p>
+
+<label for="size-Harrington Jacket">Size:</label>
+  <select id="size-Harrington Jacket">
+    <option>S</option>
+    <option>M</option>
+    <option>L</option>
+    <option>XL</option>
+  </select>
+
+  <div class="color-options" id="color-options-Harrington Jacket">
+  <span class="color-circle" data-color="Black" style="background: black;"></span>
+  <span class="color-circle" data-color="Brown" style="background: saddlebrown;"></span>
+  <span class="color-circle" data-color="Blue" style="background: steelblue;"></span>
+</div>
+<input type="hidden" id="color-Harrington Jacket" value="Black">
+
+          <button class="buy-btn" onclick="openQuickView('images/Harrington Jacket.jpg', 'Harrington Jacket', 'Harrington Jacket.')">Quick View</button>
+                         <label for="qty-Harrington Jacket">Quantity:</label>
+                  <select id="qty-Harrington Jacket">
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                </select>
+          <button class="add-cart-btn" onclick="addToCartWithVariant('Harrington Jacket','images/Harrington Jacket.jpg', 499, 'size-Harrington Jacket', 'color-Harrington Jacket', 'qty-Harrington Jacket')">Add to Cart</button>
+          <a href="product-harrington-jacket.html">
+  <button class="buy-btn">View Details</button>
+</a>
+
+    </div>
+    
+    <!-- Add 3 more cards for variety -->
+    <div class="product-card"  data-category="jeans">
+      <img src="images/be117b9b-ef4c-4640-b4ae-a79c797d3cb9.jpg" alt="Ripped Jeans">
+      <h3 id="quickViewTitle">Ripped Jeans</h3>
+      <p>Sleek silhouette with modern vibes.</p>
+
+<label for="size-Ripped Jeans">Size:</label>
+  <select id="size-Ripped Jeans">
+    <option>S</option>
+    <option>M</option>
+    <option>L</option>
+    <option>XL</option>
+  </select>
+
+ <div class="color-options" id="color-options-Ripped Jeans">
+  <span class="color-circle" data-color="Black" style="background: black;"></span>
+  <span class="color-circle" data-color="Brown" style="background: saddlebrown;"></span>
+  <span class="color-circle" data-color="Blue" style="background: steelblue;"></span>
+</div>
+<input type="hidden" id="color-Ripped Jeans" value="Black">
+
+       <button class="buy-btn" onclick="openQuickView('images/be117b9b-ef4c-4640-b4ae-a79c797d3cb9.jpg', 'Ripped Jeans', 'Harrington Jacket.')">Quick View</button>
+                    <label for="qty-Ripped Jeans">Quantity:</label>
+                  <select id="qty-Ripped Jeans">
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                </select>
+       <button class="add-cart-btn" onclick="addToCartWithVariant('Ripped Jeans','images/be117b9b-ef4c-4640-b4ae-a79c797d3cb9.jpg',599, 'size-Ripped Jeans', 'color-Ripped Jeans', 'qty-Ripped Jeans')">Add to Cart</button>
+       <a href="product-ripped-jeans.html">
+  <button class="buy-btn">View Details</button>
+</a>
+
+    </div>
+
+    <div class="product-card"  data-category="tshirt">
+      <img src="images/Oversized T-shirts.jpg" alt="Oversized T-Shirt">
+      <h3 id="quickViewTitle">Oversized T-Shirt</h3>
+      <p>Comfy & cool — the trending fit of the year.</p>
+<label for="size-Oversized T-Shirt">Size:</label>
+  <select id="size-Oversized T-Shirt">
+    <option>S</option>
+    <option>M</option>
+    <option>L</option>
+    <option>XL</option>
+  </select>
+
+ <div class="color-options" id="color-options-Oversized T-Shirt">
+  <span class="color-circle" data-color="Black" style="background: black;"></span>
+  <span class="color-circle" data-color="Brown" style="background: saddlebrown;"></span>
+  <span class="color-circle" data-color="Blue" style="background: steelblue;"></span>
+</div>
+<input type="hidden" id="color-Oversized T-Shirt" value="Black">
+       <button class="buy-btn" onclick="openQuickView('images/Oversized T-shirts.jpg', 'Oversized T-Shirt', 'Comfy & cool — the trending fit of the year.')">Quick View</button>
+                      <label for="qty-Oversized T-Shirt">Quantity:</label>
+                  <select id="qty-Oversized T-Shirt">
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                </select>
+       <button class="add-cart-btn" onclick="addToCartWithVariant('Oversized T-Shirt','images/Oversized T-shirts.jpg', 999, 'size-Oversized T-Shirt', 'color-Oversized T-Shirt', 'qty-Oversized T-Shirt')">Add to Cart</button>
+<a href="product-oversized-tee.html">
+  <button class="buy-btn">View Details</button>
+</a>
+
+
+    </div>
+
+          <div class="product-card"  data-category="tshirt">
+      <img src="images/Short sleve T-shirts.jpg" alt="Short sleve T-shirts">
+      <h3 id="quickViewTitle">Short sleve T-shirts</h3>
+      <p>Comfy & cool — the trending fit of the year.</p>
+ <label for="size-Short sleve T-shirts">Size:</label>
+  <select id="size-Short sleve T-shirts">
+    <option>S</option>
+    <option>M</option>
+    <option>L</option>
+    <option>XL</option>
+  </select>
+
+  <div class="color-options" id="color-options-Short sleve T-shirts">
+  <span class="color-circle" data-color="Black" style="background: black;"></span>
+  <span class="color-circle" data-color="Brown" style="background: saddlebrown;"></span>
+  <span class="color-circle" data-color="Blue" style="background: steelblue;"></span>
+</div>
+<input type="hidden" id="color-Short sleve T-shirts" value="Black">
+
+     <button class="buy-btn" onclick="openQuickView('images/Short sleve T-shirts.jpg', 'Short sleve T-shirts', 'CShort sleeve shirts have partial sleeves, typically finishing at the bicep or mid-arm, while also having a looser fit design.')">Quick View</button>
+                     <label for="qty-Short sleve T-shirts">Quantity:</label>
+                  <select id="qty-Short sleve T-shirts">
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                </select>
+     <button class="add-cart-btn" onclick="addToCartWithVariant('Short sleve T-shirts','images/Short sleve T-shirts.jpg', 799, 'size-Short sleve T-shirts', 'color-Short sleve T-shirts', 'qty-Short sleve T-shirts')">Add to Cart</button>
+<a href="product-short-sleeve.html">
+  <button class="buy-btn">View Details</button>
+</a>
+
+
+    </div>
+
+    <div class="product-card"  data-category="jacket">
+      <img src="images/Denim Jacket.jpg" alt="Denim Jacket">
+      <h3 id="quickViewTitle">Denim Jacket</h3>
+      <p>Layer it right with our signature denim.</p>
+
+      <label for="size-Denim Jacket">Size:</label>
+  <select id="size-Denim Jacket">
+    <option>S</option>
+    <option>M</option>
+    <option>L</option>
+    <option>XL</option>
+  </select>
+
+ <div class="color-options" id="color-options-Denim Jacket">
+  <span class="color-circle" data-color="Black" style="background: black;"></span>
+  <span class="color-circle" data-color="Brown" style="background: saddlebrown;"></span>
+  <span class="color-circle" data-color="Blue" style="background: steelblue;"></span>
+</div>
+<input type="hidden" id="color-Denim Jacket" value="Black">
+ <button class="buy-btn" onclick="openQuickView('images/Denim Jacket.jpg', 'Denim Jacket', 'Layer it right with our signature denim.')">Quick View</button>
+             <label for="qty-Denim Jacket">Quantity:</label>
+             <select id="qty-Denim Jacket">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+              <option value="5">5</option>
+       </select>
+ <button class="add-cart-btn"
+  onclick="addToCartWithVariant('Denim Jacket', 'images/Denim Jacket.jpg', 899, 'size-Denim Jacket', 'color-Denim Jacket', 'qty-Denim Jacket')">Add to Cart</button>
+<a href="product-denim-jacket.html">
+  <button class="buy-btn">View Details</button>
+</a>
+
+
+    </div>
+              
+   <div class="product-card" data-category="jacket">
+  <img src="images/Blazer.jpg" alt="Blazer">
+  <h3>Blazer</h3>
+  <p>Layer it right with our signature denim.</p>
+
+  <label for="size-Blazer">Size:</label>
+  <select id="size-Blazer">
+    <option>S</option>
+    <option>M</option>
+    <option>L</option>
+    <option>XL</option>
+  </select>
+
+ <div class="color-options" id="color-options-Blazer">
+  <span class="color-circle" data-color="Black" style="background: black;"></span>
+  <span class="color-circle" data-color="Brown" style="background: saddlebrown;"></span>
+  <span class="color-circle" data-color="Blue" style="background: steelblue;"></span>
+</div>
+<input type="hidden" id="color-Blazer" value="Black">
+  <button class="buy-btn"
+    onclick="openQuickView('images/Blazer.jpg', 'Blazer', 'A versatile blazer.', 'size-Blazer', 'color-Blazer')">
+    Quick View
+  </button>
+              <label for="qty-Blazer">Quantity:</label>
+                  <select id="qty-Blazer">
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                </select>
+  <button class="add-cart-btn"
+    onclick="addToCartWithVariant('Blazer', 'images/Blazer.jpg', 1799, 'size-Blazer', 'color-Blazer','qty-Blazer')">
+    Add to Cart
+  </button>
+<a href="product-blazer.html"><button class="buy-btn">View Details</button></a>
+
+
+</div>
+     
+  </div>
+</section>
+
+
+
+  <footer>
+    © 2025 BlueAura. Designed by Sanjana Rembersu.
+  </footer>
+
+ <!-- Quick View Popup -->
+<div id="quickView" class="quick-view-popup">
+  <div class="popup-content">
+    <span class="close-btn" onclick="closeQuickView()">&times;</span>
+    <img id="quickViewImage" src="" alt="Product">
+    <h3 id="quickViewTitle">Product Name</h3>
+    <p id="quickViewDesc">Product Description</p>
+     <button class="buy-now-btn" onclick="buyNow()">Buy Now</button>
+  </div>
+</div>
+
+<section class="review-carousel">
+  <h3>Customer Reviews</h3>
+  <div class="carousel-container">
+    <button class="carousel-btn prev">←</button>
+    <div class="carousel-track">
+      <div class="carousel-slide">
+        <div class="stars">★★★★★</div>
+        <p><strong>Priya</strong><br>"Super comfy and fits perfectly. Loved the quality!"</p>
+      </div>
+      <div class="carousel-slide">
+        <div class="stars">★★★★☆</div>
+        <p><strong>Rahul</strong><br>"Stylish and affordable. Would recommend to friends."</p>
+      </div>
+      <div class="carousel-slide">
+        <div class="stars">★★★★★</div>
+        <p><strong>Anjali</strong><br>"Great fitting and the fabric feels premium!"</p>
+      </div>
+    </div>
+    <button class="carousel-btn next">→</button>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-content">
+    <p class="footer-brand">BlueAura</p>
+    <nav class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="#products">Products</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <p class="footer-copy">© 2025 BlueAura. Designed by Sanjana Rembersu.</p>
+  </div>
+</footer>
+
+
+<script src="script.js"></script>
+</body>
+
+</body>
+</html>

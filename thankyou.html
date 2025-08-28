@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Order Confirmed - BlueAura</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .thankyou-container {
+      max-width: 600px;
+      margin: 100px auto;
+      padding: 40px;
+      text-align: center;
+      background-color: #f5f9ff;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+
+    .thankyou-container h1 {
+      color: #0b1c3d;
+      font-size: 2.5rem;
+    }
+
+    .thankyou-container p {
+      font-size: 1.2rem;
+      margin-top: 15px;
+      color: #444;
+    }
+
+    .thankyou-container img {
+      margin: 20px 0;
+      width: 120px;
+      animation: pop 0.4s ease-in-out forwards;
+    }
+
+    @keyframes pop {
+      0% { transform: scale(0.5); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    .thankyou-container a {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 12px 20px;
+      background-color: #0b1c3d;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+
+    .thankyou-container a:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="thankyou-container">
+    <img src="https://cdn-icons-png.flaticon.com/512/190/190411.png" alt="Checkmark">
+    <h1>Thank You for Your Order!</h1>
+    <p>Your BlueAura order has been sent. We'll contact you shortly on WhatsApp.</p>
+    <a href="index.html">Back to Home</a>
+  </div>
+
+</body>
+</html>

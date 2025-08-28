@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Checkout - BlueAura</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .checkout-form {
+      max-width: 500px;
+      margin: 40px auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    }
+
+    .checkout-form h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #0b1c3d;
+    }
+
+    .checkout-form label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: 600;
+    }
+
+    .checkout-form input,
+    .checkout-form textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .checkout-form button {
+      background-color: #0b1c3d;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      width: 100%;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .checkout-form button:hover {
+      background-color: #ffcc99;
+      color: #0b1c3d;
+    }
+  </style>
+</head>
+<body>
+
+<header class="navbar">
+  <div class="brand-logo">
+    <span>BlueAura</span>
+  </div>
+  <nav class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="cart.html">Cart</a>
+  </nav>
+</header>
+
+<section class="checkout-form">
+  <h2>Checkout Form</h2>
+  <form onsubmit="sendOrder(event)">
+    <label for="name">Full Name</label>
+    <input type="text" id="name" required>
+
+    <label for="phone">Phone Number</label>
+    <input type="tel" id="phone" required>
+
+    <label for="email">Email</label>
+    <input type="email" id="email">
+
+    <label for="address">Delivery Address</label>
+    <textarea id="address" rows="3" required></textarea>
+
+    <label for="note">Additional Notes</label>
+    <textarea id="note" rows="2"></textarea>
+
+    <button type="submit">Place Order via WhatsApp</button>
+  </form>
+</section>
+
+<script>
+  const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
+
+  function sendOrder(e) {
+    e.preventDefault();
+
+    if (cartItems.length === 0) {
+      alert("Your cart is empty.");
+      return;
+    }
+
+    const name = document.getElementById("name").value.trim();
+    const phone = document.getElementById("phone").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const address = document.getElementById("address").value.trim();
+    const note = document.getElementById("note").value.trim();
+
+    let message = `Hi BlueAura, I want to place an order:\n\nCustomer Details:\nName: ${name}\nPhone: ${phone}\nEmail: ${email}\nAddress: ${address}\nNote: ${note}\n\nOrder Summary:\n`;
+
+    let total = 0;
+    cartItems.forEach((item, i) => {
+      message += `${i + 1}. ${item.name} (Size: ${item.size}, Color: ${item.color}, Qty: ${item.quantity}) - ₹${item.price * item.quantity}\n`;
+      total += item.price * item.quantity;
+    });
+
+    message += `\nTotal: ₹${total}`;
+
+    const phoneNumber = "919561461678";
+    const encoded = encodeURIComponent(message);
+    const whatsappURL = `https://wa.me/${phoneNumber}?text=${encoded}`;
+
+    // ✅ Open WhatsApp
+    window.open(whatsappURL, "_blank");
+
+    // ✅ Clear the cart
+    localStorage.setItem("cart", JSON.stringify([]));
+
+    // ✅ Redirect to Thank You page after delay
+    setTimeout(() => {
+      window.location.href = "thankyou.html";
+    }, 2000); // 2-second delay
+  }
+</script>
+
+
+
+</body>
+</html>

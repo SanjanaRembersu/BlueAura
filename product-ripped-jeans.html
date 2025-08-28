@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Ripped Jeans - BlueAura</title>
+  <link rel="icon" href="favicon.png" type="image/png" />
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .product-detail {
+      max-width: 900px;
+      margin: 60px auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      padding: 0 20px;
+    }
+
+    .product-detail img {
+      max-width: 400px;
+      width: 100%;
+      border-radius: 8px;
+    }
+
+    .product-info {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .product-info h2 {
+      font-size: 2rem;
+      color: #0b1c3d;
+    }
+
+    .product-info p {
+      font-size: 1rem;
+      margin-top: 10px;
+      color: #444;
+    }
+
+    .rating {
+      margin: 10px 0;
+      font-size: 1.1rem;
+      color: #ffaa00;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    select, .color-options {
+      margin-top: 5px;
+      margin-bottom: 15px;
+    }
+
+    .color-options {
+      display: flex;
+      gap: 10px;
+    }
+
+    .color-circle {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      border: 2px solid transparent;
+      cursor: pointer;
+    }
+
+    .color-circle.selected {
+      border-color: #0b1c3d;
+    }
+
+    .buy-now-btn {
+      background-color: #0b1c3d;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      font-size: 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    .buy-now-btn:hover {
+      background-color: #ffaa00;
+      color: #0b1c3d;
+    }
+  </style>
+</head>
+<body>
+
+<header class="navbar">
+  <div class="brand-logo">
+    <span>BlueAura</span>
+  </div>
+  <nav class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="cart.html">Cart</a>
+  </nav>
+</header>
+
+<section class="product-detail">
+  <img src="images/be117b9b-ef4c-4640-b4ae-a79c797d3cb9.jpg" alt="Ripped Jeans">
+
+  <div class="product-info">
+    <h2>Ripped Jeans</h2>
+    <div class="star-rating" style="--rating: 90%;"></div>
+    <p>Our ripped jeans offer a bold, edgy look with distressed details and a flattering silhouette. Perfect for modern casual outfits with attitude.</p>
+
+    <label for="size">Select Size:</label>
+    <select id="size">
+      <option>S</option>
+      <option>M</option>
+      <option>L</option>
+      <option>XL</option>
+    </select>
+
+    <label>Select Color:</label>
+    <div class="color-options">
+      <span class="color-circle selected" data-color="Classic Blue" style="background: steelblue;"></span>
+      <span class="color-circle" data-color="Washed Black" style="background: #333;"></span>
+      <span class="color-circle" data-color="Ash Grey" style="background: #888;"></span>
+    </div>
+    <input type="hidden" id="color" value="Classic Blue">
+
+    <label for="qty">Quantity:</label>
+    <select id="qty">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+    </select>
+
+    <button class="buy-now-btn" onclick="buyNow()">Buy Now via WhatsApp</button>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll('.color-circle').forEach(circle => {
+    circle.addEventListener('click', () => {
+      document.querySelectorAll('.color-circle').forEach(c => c.classList.remove('selected'));
+      circle.classList.add('selected');
+      document.getElementById('color').value = circle.getAttribute('data-color');
+    });
+  });
+
+  function buyNow() {
+    const size = document.getElementById('size').value;
+    const color = document.getElementById('color').value;
+    const qty = document.getElementById('qty').value;
+
+    const message = `Hi BlueAura, I want to buy:\n\nProduct: Ripped Jeans\nSize: ${size}\nColor: ${color}\nQuantity: ${qty}`;
+    const phone = "919561461687";
+    const whatsappURL = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+
+    window.open(whatsappURL, "_blank");
+  }
+</script>
+
+
+
+
+<section class="review-carousel">
+  <h3>Customer Reviews</h3>
+  <div class="carousel-container">
+    <button class="carousel-btn prev">←</button>
+    <div class="carousel-track">
+      <div class="carousel-slide">
+        <div class="stars">★★★★★</div>
+        <p><strong>Priya</strong><br>"Super comfy and fits perfectly. Loved the quality!"</p>
+      </div>
+      <div class="carousel-slide">
+        <div class="stars">★★★★☆</div>
+        <p><strong>Rahul</strong><br>"Stylish and affordable. Would recommend to friends."</p>
+      </div>
+      <div class="carousel-slide">
+        <div class="stars">★★★★★</div>
+        <p><strong>Anjali</strong><br>"Great fitting and the fabric feels premium!"</p>
+      </div>
+    </div>
+    <button class="carousel-btn next">→</button>
+  </div>
+</section>
+
+<script>
+  const track = document.querySelector('.carousel-track');
+  const slides = document.querySelectorAll('.carousel-slide');
+  const nextBtn = document.querySelector('.carousel-btn.next');
+  const prevBtn = document.querySelector('.carousel-btn.prev');
+
+  let currentIndex = 0;
+
+  function updateCarousel() {
+    const slideWidth = slides[0].offsetWidth;
+    track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+  }
+
+  if (nextBtn && prevBtn && track && slides.length) {
+    nextBtn.addEventListener('click', () => {
+      currentIndex = (currentIndex + 1) % slides.length;
+      updateCarousel();
+    });
+
+    prevBtn.addEventListener('click', () => {
+      currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+      updateCarousel();
+    });
+
+    window.addEventListener('resize', updateCarousel);
+    updateCarousel();
+  } else {
+    console.warn("Carousel elements not found. Check class names and order.");
+  }
+</script>
+
+<section class="related-products">
+  <h3>You May Also Like</h3>
+  <div class="related-grid">
+    <div class="related-item">
+      <a href="product-bootcut-jeans.html">
+        <img src="images/Bootcut-Jeans.jpg" alt="Bootcut Jeans">
+        <p>Bootcut Jeans</p>
+      </a>
+    </div>
+
+    <div class="related-item">
+      <a href="product-uniqlo-wide.html">
+        <img src="images/Uniqlo Wide.jpg" alt="Uniqlo Wide">
+        <p>Uniqlo Wide</p>
+      </a>
+    </div>
+
+    <div class="related-item">
+      <a href="product-ripped-jeans.html">
+        <img src="images/be117b9b-ef4c-4640-b4ae-a79c797d3cb9.jpg" alt="Ripped Jeans">
+        <p>Ripped Jeans</p>
+      </a>
+    </div>
+  </div>
+</section>
+<footer class="site-footer">
+  <div class="footer-content">
+    <p class="footer-brand">BlueAura</p>
+    <nav class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="#products">Products</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <p class="footer-copy">© 2025 BlueAura. Designed by Sanjana Rembersu.</p>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>BlueAura Cart</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="navbar">
+  <div class="brand-logo">
+    <span>BlueAura</span>
+  </div>
+  <nav class="nav-links">
+    <a href="index.html">← Continue Shopping</a>
+  </nav>
+</header>
+
+<section class="page-section">
+  <h2>Your Cart</h2>
+  <div id="cart-items"></div>
+  <div id="empty-cart-message" style="text-align:center; color:#888; margin-top:20px;">
+    Your cart is empty.
+  </div>
+
+  <div style="text-align:center; margin-top:30px;">
+  <a href="checkout.html"><button class="buy-now-btn">Proceed to Checkout</button></a>
+
+  </div>
+</section>
+
+<script>
+  let cartItems = JSON.parse(localStorage.getItem("cart")) || [];
+
+  function displayCart() {
+    const cartContainer = document.getElementById("cart-items");
+    const emptyMessage = document.getElementById("empty-cart-message");
+
+    cartContainer.innerHTML = "";
+    let total = 0;
+
+    if (cartItems.length === 0) {
+      emptyMessage.style.display = "block";
+      return;
+    } else {
+      emptyMessage.style.display = "none";
+    }
+
+    cartItems.forEach((item, index) => {
+      total += item.price * item.quantity;
+
+      const div = document.createElement("div");
+      div.className = "cart-product";
+
+      div.innerHTML = `
+        <img src="${item.image}" alt="${item.name}" class="cart-thumbnail" />
+        <div class="cart-details">
+          <h3>${item.name}</h3>
+          <p>Size: ${item.size} | Color: ${item.color} | Quantity: ${item.quantity}</p>
+          <p>Price: ₹${item.price} × ${item.quantity} = ₹${item.price * item.quantity}</p>
+          <button class="add-cart-btn" onclick="removeFromCart(${index})">Remove</button>
+        </div>
+      `;
+
+      cartContainer.appendChild(div);
+    });
+
+    const totalDiv = document.createElement("div");
+    totalDiv.style.textAlign = "center";
+    totalDiv.style.fontSize = "1.2rem";
+    totalDiv.style.marginTop = "20px";
+    totalDiv.innerHTML = `<strong>Total: ₹${total}</strong>`;
+    cartContainer.appendChild(totalDiv);
+  }
+
+  function removeFromCart(index) {
+    cartItems.splice(index, 1);
+    localStorage.setItem("cart", JSON.stringify(cartItems));
+    displayCart();
+  }
+
+  displayCart();
+</script>
+
+
+
+</body>
+</html>
