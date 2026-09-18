@@ -377,6 +377,122 @@ body {
   }
 }
 
+/* update hero  update */
+/* ==========================================================================
+   CINEMATIC BACKGROUND & REEL ANIMATIONS
+   ========================================================================== */
+.hero-banner {
+  position: relative;
+  background-color: #060b17;
+  color: #ffffff;
+  padding: 100px 20px;
+  overflow: hidden;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+}
+
+/* Background Visual Layer */
+.cinematic-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Dark Overlays for Text Readability */
+.cinematic-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg, 
+    rgba(6, 11, 23, 0.95) 0%, 
+    rgba(6, 11, 23, 0.8) 50%, 
+    rgba(6, 11, 23, 0.65) 100%
+  );
+  z-index: 2;
+}
+
+.cinematic-vignette {
+  position: absolute;
+  inset: 0;
+  box-shadow: inset 0 0 120px rgba(0, 0, 0, 0.9);
+  z-index: 3;
+}
+
+/* Fashion Columns Reel */
+.fashion-reel {
+  display: flex;
+  justify-content: space-between;
+  width: 120%;
+  height: 140%;
+  position: absolute;
+  top: -20%;
+  left: -10%;
+  opacity: 0.22; /* Soft cinematic opacity so it doesn't distract from text */
+  transform: rotate(-6deg) scale(1.1); /* Subtle slanted perspective */
+  gap: 20px;
+}
+
+.reel-column {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 33%;
+}
+
+.reel-column img {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  border-radius: 16px;
+  filter: grayscale(30%) contrast(110%);
+}
+
+/* Infinite Scrolling Animations */
+.reel-up {
+  animation: scrollUp 28s linear infinite;
+}
+
+.reel-down {
+  animation: scrollDown 32s linear infinite;
+}
+
+@keyframes scrollUp {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-50%); }
+}
+
+@keyframes scrollDown {
+  0% { transform: translateY(-50%); }
+  100% { transform: translateY(0); }
+}
+
+/* Ensure Front Content stays sharp above the moving reel */
+.hero-container {
+  z-index: 10;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .fashion-reel {
+    width: 140%;
+    left: -20%;
+    opacity: 0.15;
+  }
+  
+  .mobile-hide {
+    display: none;
+  }
+
+  .cinematic-overlay {
+    background: rgba(6, 11, 23, 0.88);
+  }
+}
+
 .slideshow {
   position: relative;
   width: 100%;
