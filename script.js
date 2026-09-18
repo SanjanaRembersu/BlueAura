@@ -4,6 +4,28 @@ const prev = document.querySelector('.prev');
 const dots = document.querySelectorAll('.dot');
 let current = 0;
 
+document.addEventListener('DOMContentLoaded', () => {
+  const hero = document.getElementById('runwayHero');
+  const overlay = document.getElementById('spotlightOverlay');
+
+  if (hero && overlay) {
+    hero.addEventListener('mousemove', (e) => {
+      const rect = hero.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width) * 100;
+      const y = ((e.clientY - rect.top) / rect.height) * 100;
+
+      overlay.style.setProperty('--mouse-x', `${x}%`);
+      overlay.style.setProperty('--mouse-y', `${y}%`);
+    });
+
+    // Reset spotlight to center when mouse leaves section
+    hero.addEventListener('mouseleave', () => {
+      overlay.style.setProperty('--mouse-x', '50%');
+      overlay.style.setProperty('--mouse-y', '50%');
+    });
+  }
+});
+
 function showSlide(index) {
   slides.forEach((slide, i) => {
     slide.classList.remove('active');
