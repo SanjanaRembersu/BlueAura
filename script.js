@@ -2,27 +2,32 @@
 // RUNWAY SPOTLIGHT & HERO TRACKING
 // ==========================================================================
 document.addEventListener('DOMContentLoaded', () => {
-  const hero = document.getElementById('runwayHero');
-  const overlay = document.getElementById('spotlightOverlay');
+// Lookbook Tab Hover / Click Switcher
+const tabs = document.querySelectorAll('.tab-btn');
+const modelImg = document.getElementById('activeModelImg');
+const stageBadge = document.getElementById('stageBadge');
 
-  if (hero && overlay) {
-    hero.addEventListener('mousemove', (e) => {
-      const rect = hero.getBoundingClientRect();
-      const x = ((e.clientX - rect.left) / rect.width) * 100;
-      const y = ((e.clientY - rect.top) / rect.height) * 100;
+tabs.forEach((tab) => {
+  const switchImage = () => {
+    tabs.forEach((t) => t.classList.remove('active'));
+    tab.classList.add('active');
 
-      overlay.style.setProperty('--mouse-x', `${x}%`);
-      overlay.style.setProperty('--mouse-y', `${y}%`);
-    });
+    const newSrc = tab.getAttribute('data-img');
+    const newLabel = tab.getAttribute('data-label');
 
-    hero.addEventListener('mouseleave', () => {
-      overlay.style.setProperty('--mouse-x', '50%');
-      overlay.style.setProperty('--mouse-y', '50%');
-    });
-  }
+    if (modelImg && newSrc) {
+      modelImg.classList.add('swapping');
+      setTimeout(() => {
+        modelImg.src = newSrc;
+        if (stageBadge && newLabel) stageBadge.innerText = newLabel;
+        modelImg.classList.remove('swapping');
+      }, 200);
+    }
+  };
 
-  // Initialize Cart Count on Page Load
-  updateCartCount();
+  tab.addEventListener('mouseenter', switchImage);
+  tab.addEventListener('click', switchImage);
+});
 });
 
 // ==========================================================================

@@ -36,29 +36,38 @@
   </header>
 
   <main>
-    <!-- Slideshow / Hero Section -->
-   <!-- Hero Banner Section -->
-<!-- Hero Banner Section with Cinematic BG -->
-<!-- Runway Spotlight Hero Section -->
-<section class="runway-hero" id="runwayHero">
-  <!-- Background Video Stream -->
-<video class="runway-video" autoplay loop muted playsinline poster="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1600&q=80">
-<source src="https://assets.mixkit.co/videos/preview/mixkit-model-walking-on-a-fashion-runway-41139-large.mp4" type="video/mp4">  Your browser does not support video.
-</video>
+   <section class="lookbook-hero">
+  <!-- Interactive Background Canvas Layer -->
+  <div class="hero-bg-layer">
+    <div class="gradient-glow"></div>
+  </div>
 
-  <!-- Interactive Spotlight & Vignette Overlay -->
-  <div class="spotlight-overlay" id="spotlightOverlay"></div>
-  <div class="vignette-layer"></div>
+  <div class="lookbook-container">
+    <!-- Left Text & Interactive Model Switcher -->
+    <div class="lookbook-content">
+      <span class="edition-tag">Spring / Summer Edition</span>
+      <h1 class="lookbook-title">AURA <span class="highlight">HAUTE</span> COUTURE</h1>
+      <p class="lookbook-desc">Hover over the runway edits below to shift the model presentation in real-time.</p>
 
-  <!-- Hero Text & CTA Content -->
-  <div class="runway-content">
-    <span class="runway-badge">✨ Paris Fashion Week Edit</span>
-    <h1 class="runway-title">WALK THE <span class="stroke-text">RUNWAY</span></h1>
-    <p class="runway-subtitle">High-fashion luxury meets motion. Move your cursor to illuminate the collection on the runway.</p>
-    
-    <div class="runway-actions">
-      <a href="#products" class="btn-runway primary">Explore Runway Fits</a>
-      <a href="#lookbook" class="btn-runway secondary">Watch Full Show</a>
+      <!-- Category Hover Triggers -->
+      <div class="runway-tabs">
+        <button class="tab-btn active" data-img="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1000&q=80" data-label="Runway Edit #01">01. Streetwear Luxe</button>
+        <button class="tab-btn" data-img="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=1000&q=80" data-label="Runway Edit #02">02. Minimalist Trench</button>
+        <button class="tab-btn" data-img="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1000&q=80" data-label="Runway Edit #03">03. Evening Avant-Garde</button>
+      </div>
+
+      <div class="hero-actions">
+        <a href="#products" class="btn-main">Shop The Runway</a>
+      </div>
+    </div>
+
+    <!-- Right Animated Model Display -->
+    <div class="lookbook-visual">
+      <div class="frame-border"></div>
+      <div class="model-stage" id="modelStage">
+        <img id="activeModelImg" src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1000&q=80" alt="Runway Model" class="stage-img">
+        <span class="stage-badge" id="stageBadge">Runway Edit #01</span>
+      </div>
     </div>
   </div>
 </section>
@@ -90,7 +99,7 @@
         
         <!-- Bootcut Jeans -->
         <div class="product-card" data-category="jeans">
-          <img src="https://www.google.com/imgres?q=bootcut%20jeans&imgurl=https%3A%2F%2Fcottonon.com%2Fdw%2Fimage%2Fv2%2FBBDS_PRD%2Fon%2Fdemandware.static%2F-%2FSites-catalog-master-men%2Fdefault%2Fdwfe09b749%2F3612978%2F3612978-28-2.jpg%3Fsw%3D640%26sh%3D960%26sm%3Dfit&imgrefurl=https%3A%2F%2Fcottonon.com%2FUS%2Fbaggy-bootcut-jean%2F3612978-28.html%3Fsrsltid%3DAU7gw4XPk04epGHHvUFsHwACj185KM6wlMW0yqEqycN834-zsza7hQ5g&docid=7EL4zlFJCz9P-M&tbnid=Rcvoz_ywfb8tCM&vet=12ahUKEwjusoO8xfiWAxUJXesIHT7EJRQQnPAOegUIvgQQAA..i&w=640&h=960&hcb=2&ved=2ahUKEwjusoO8xfiWAxUJXesIHT7EJRQQnPAOegUIvgQQAA" alt="Bootcut Jeans">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTeaC8_DIb19zgASeYg9Br2B7xWwWG6w1fnu6Our4Itrg&s=10" alt="Bootcut Jeans">
           <h3>Bootcut Jeans</h3>
           <p class="price">₹900</p>
           <p class="description">Comfort-fit, stylish denim for everyday wear.</p>
