@@ -2,65 +2,266 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Order Confirmed - BlueAura</title>
+  <link rel="icon" href="favicon.png" type="image/png" />
   <link rel="stylesheet" href="style.css">
   <style>
-    .thankyou-container {
-      max-width: 600px;
-      margin: 100px auto;
-      padding: 40px;
+    /* ==========================================================================
+       THANK YOU PAGE (BLUEAURA PREMIUM DARK THEME)
+       ========================================================================== */
+    body {
+      background-color: #060b17;
+      color: #ffffff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      background: rgba(15, 23, 42, 0.8);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .brand-logo span {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #38bdf8;
+      letter-spacing: 1px;
+    }
+
+    .nav-links a {
+      color: #cbd5e1;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: #38bdf8;
+    }
+
+    /* Main Section */
+    .thankyou-wrapper {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 20px;
+    }
+
+    .thankyou-card {
+      max-width: 580px;
+      width: 100%;
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 24px;
+      padding: 50px 40px;
       text-align: center;
-      background-color: #f5f9ff;
-      border-radius: 12px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      backdrop-filter: blur(16px);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+      position: relative;
+      overflow: hidden;
     }
 
-    .thankyou-container h1 {
-      color: #0b1c3d;
-      font-size: 2.5rem;
+    /* Animated Success Checkmark Ring */
+    .checkmark-wrapper {
+      width: 90px;
+      height: 90px;
+      background: rgba(56, 189, 248, 0.15);
+      border: 2px solid #38bdf8;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 30px;
+      box-shadow: 0 0 30px rgba(56, 189, 248, 0.4);
+      animation: pop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
     }
 
-    .thankyou-container p {
-      font-size: 1.2rem;
-      margin-top: 15px;
-      color: #444;
-    }
-
-    .thankyou-container img {
-      margin: 20px 0;
-      width: 120px;
-      animation: pop 0.4s ease-in-out forwards;
+    .checkmark-icon {
+      width: 48px;
+      height: 48px;
+      fill: #38bdf8;
     }
 
     @keyframes pop {
-      0% { transform: scale(0.5); opacity: 0; }
+      0% { transform: scale(0.4); opacity: 0; }
       100% { transform: scale(1); opacity: 1; }
     }
 
-    .thankyou-container a {
-      display: inline-block;
-      margin-top: 30px;
-      padding: 12px 20px;
-      background-color: #0b1c3d;
-      color: white;
-      text-decoration: none;
-      border-radius: 8px;
-      font-weight: bold;
+    .thankyou-card h1 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #ffffff;
+      margin: 0 0 15px;
+      letter-spacing: -0.5px;
     }
 
-    .thankyou-container a:hover {
-      background-color: #0056b3;
+    .thankyou-card p {
+      font-size: 1.05rem;
+      color: #cbd5e1;
+      line-height: 1.6;
+      margin: 0 0 30px;
+    }
+
+    /* Info Badge Box */
+    .order-info-box {
+      background: rgba(30, 41, 59, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 35px;
+      text-align: left;
+    }
+
+    .order-info-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.9rem;
+      color: #94a3b8;
+    }
+
+    .order-info-item:not(:last-child) {
+      margin-bottom: 12px;
+    }
+
+    .order-info-item span {
+      color: #ffffff;
+      font-weight: 600;
+    }
+
+    /* Actions */
+    .btn-home {
+      display: inline-block;
+      width: 100%;
+      max-width: 280px;
+      padding: 16px 24px;
+      background: linear-gradient(135deg, #38bdf8 0%, #0284c7 100%);
+      color: #ffffff;
+      text-decoration: none;
+      border-radius: 30px;
+      font-size: 1rem;
+      font-weight: 700;
+      box-shadow: 0 4px 15px rgba(56, 189, 248, 0.3);
+      transition: all 0.3s ease;
+      box-sizing: border-box;
+    }
+
+    .btn-home:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(56, 189, 248, 0.5);
+    }
+
+    /* Footer */
+    .site-footer {
+      background: rgba(15, 23, 42, 0.9);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .footer-brand {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #38bdf8;
+      margin-bottom: 15px;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
+    .footer-links a {
+      color: #cbd5e1;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .footer-copy {
+      color: #64748b;
+      font-size: 0.85rem;
+      margin: 0;
+    }
+
+    @media (max-width: 600px) {
+      .thankyou-card {
+        padding: 35px 20px;
+      }
+      .thankyou-card h1 {
+        font-size: 1.8rem;
+      }
     }
   </style>
 </head>
 <body>
 
-  <div class="thankyou-container">
-    <img src="https://cdn-icons-png.flaticon.com/512/190/190411.png" alt="Checkmark">
-    <h1>Thank You for Your Order!</h1>
-    <p>Your BlueAura order has been sent. We'll contact you shortly on WhatsApp.</p>
-    <a href="index.html">Back to Home</a>
+<header class="navbar">
+  <div class="brand-logo">
+    <span>BlueAura</span>
   </div>
+  <nav class="nav-links">
+    <a href="index.html">Home</a>
+  </nav>
+</header>
+
+<main class="thankyou-wrapper">
+  <div class="thankyou-card">
+    
+    <div class="checkmark-wrapper">
+      <svg class="checkmark-icon" viewBox="0 0 24 24">
+        <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+      </svg>
+    </div>
+
+    <h1>Order Sent Successfully!</h1>
+    
+    <p>
+      Thank you for shopping with BlueAura. Your order request has been dispatched via WhatsApp. Our team will review your items and confirm your delivery details shortly.
+    </p>
+
+    <div class="order-info-box">
+      <div class="order-info-item">
+        💬 <span>Next Step:</span> Keep WhatsApp open to finalize order confirmation.
+      </div>
+      <div class="order-info-item">
+        🚚 <span>Estimated Dispatch:</span> Within 24-48 hours.
+      </div>
+    </div>
+
+    <a href="index.html" class="btn-home">Continue Shopping</a>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-content">
+    <p class="footer-brand">BlueAura</p>
+    <nav class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="index.html#products">Products</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+    <p class="footer-copy">© 2026 BlueAura. Designed by Sanjana Rembersu.</p>
+  </div>
+</footer>
 
 </body>
 </html>

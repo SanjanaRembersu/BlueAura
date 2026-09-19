@@ -2,90 +2,340 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Denim Tapered - BlueAura</title>
   <link rel="icon" href="favicon.png" type="image/png" />
   <link rel="stylesheet" href="style.css">
   <style>
-    .product-detail {
-      max-width: 900px;
-      margin: 60px auto;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 30px;
+    /* ==========================================================================
+       PRODUCT DETAIL PAGE (BLUEAURA PREMIUM DARK THEME)
+       ========================================================================== */
+    body {
+      background-color: #060b17;
+      color: #ffffff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Section Container */
+    .product-detail-section {
+      max-width: 1200px;
+      margin: 40px auto;
       padding: 0 20px;
     }
 
-    .product-detail img {
-      max-width: 400px;
+    .product-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: start;
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 40px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Product Image Gallery Wrapper */
+    .product-media {
+      position: relative;
       width: 100%;
-      border-radius: 8px;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     }
 
-    .product-info {
-      flex: 1;
-      min-width: 300px;
-    }
-
-    .product-info h2 {
-      font-size: 2rem;
-      color: #0b1c3d;
-    }
-
-    .product-info p {
-      font-size: 1rem;
-      margin-top: 10px;
-      color: #444;
-    }
-
-    .rating {
-      margin: 10px 0;
-      font-size: 1.1rem;
-      color: #ffaa00;
-    }
-
-    label {
+    .product-media img {
+      width: 100%;
+      height: 520px;
+      object-fit: cover;
       display: block;
-      margin-top: 15px;
-      font-weight: bold;
+      transition: transform 0.5s ease;
     }
 
-    select, .color-options {
-      margin-top: 5px;
+    .product-media:hover img {
+      transform: scale(1.03);
+    }
+
+    .badge-trending {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      background: rgba(56, 189, 248, 0.2);
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      color: #38bdf8;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      backdrop-filter: blur(8px);
+    }
+
+    /* Product Info Column */
+    .product-info h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin: 0 0 10px;
+      color: #ffffff;
+    }
+
+    .product-price-row {
+      display: flex;
+      align-items: center;
+      gap: 15px;
       margin-bottom: 15px;
     }
 
-    .color-options {
+    .current-price {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #38bdf8;
+    }
+
+    .rating-row {
       display: flex;
+      align-items: center;
       gap: 10px;
-      justify-content: center;
+      margin-bottom: 20px;
+      color: #fbbf24;
+      font-size: 0.95rem;
+    }
+
+    .rating-row span {
+      color: #94a3b8;
+    }
+
+    .product-desc {
+      font-size: 0.95rem;
+      color: #cbd5e1;
+      line-height: 1.6;
+      margin-bottom: 30px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding-bottom: 20px;
+    }
+
+    /* Form Option Groups */
+    .option-group {
+      margin-bottom: 20px;
+    }
+
+    .option-group label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #94a3b8;
+      margin-bottom: 8px;
+    }
+
+    .custom-select {
+      width: 100%;
+      max-width: 200px;
+      padding: 12px 16px;
+      background: rgba(30, 41, 59, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 8px;
+      color: #ffffff;
+      font-size: 0.95rem;
+      outline: none;
+      cursor: pointer;
+    }
+
+    .custom-select option {
+      background-color: #0f172a;
+      color: #ffffff;
+    }
+
+    /* Color Swatches */
+    .color-swatches {
+      display: flex;
+      gap: 12px;
     }
 
     .color-circle {
-      width: 24px;
-      height: 24px;
+      width: 30px;
+      height: 30px;
       border-radius: 50%;
       border: 2px solid transparent;
       cursor: pointer;
+      transition: transform 0.2s ease, border-color 0.2s ease;
     }
 
     .color-circle.selected {
-      border-color: #0b1c3d;
+      border-color: #38bdf8;
+      transform: scale(1.15);
+      box-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
     }
 
-    .buy-now-btn {
-      background-color: #0b1c3d;
-      color: white;
-      border: none;
-      padding: 12px 25px;
-      font-size: 1rem;
-      border-radius: 5px;
+    /* CTA Buttons */
+    .action-buttons {
+      display: flex;
+      gap: 15px;
+      margin-top: 30px;
+    }
+
+    .btn-add-cart {
+      flex: 1;
+      padding: 16px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #ffffff;
+      border-radius: 30px;
+      font-size: 0.95rem;
+      font-weight: 700;
       cursor: pointer;
-      margin-top: 20px;
+      transition: all 0.3s ease;
     }
 
-    .buy-now-btn:hover {
-      background-color: #ffaa00;
-      color: #0b1c3d;
+    .btn-add-cart:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+    }
+
+    .btn-whatsapp {
+      flex: 1;
+      padding: 16px;
+      background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+      border: none;
+      color: #ffffff;
+      border-radius: 30px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .btn-whatsapp:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(37, 211, 102, 0.5);
+    }
+
+    /* Customer Reviews Carousel */
+    .review-carousel {
+      max-width: 1200px;
+      margin: 60px auto;
+      padding: 0 20px;
+    }
+
+    .review-carousel h3, .related-products h3 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      margin-bottom: 25px;
+      text-align: center;
+    }
+
+    .carousel-container {
+      position: relative;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      border-radius: 16px;
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 30px;
+    }
+
+    .carousel-track {
+      display: flex;
+      transition: transform 0.4s ease-in-out;
+      width: 100%;
+    }
+
+    .carousel-slide {
+      min-width: 100%;
+      text-align: center;
+      padding: 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .carousel-slide .stars {
+      color: #fbbf24;
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+
+    .carousel-slide p {
+      font-size: 1.1rem;
+      color: #cbd5e1;
+      margin: 0;
+    }
+
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #ffffff;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      z-index: 5;
+    }
+
+    .carousel-btn.prev { left: 15px; }
+    .carousel-btn.next { right: 15px; }
+
+    /* Related Products Grid */
+    .related-products {
+      max-width: 1200px;
+      margin: 60px auto;
+      padding: 0 20px;
+    }
+
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+    }
+
+    .related-item {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+
+    .related-item:hover {
+      transform: translateY(-5px);
+    }
+
+    .related-item a {
+      text-decoration: none;
+      color: #ffffff;
+    }
+
+    .related-item img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+    }
+
+    .related-item p {
+      padding: 15px;
+      margin: 0;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .product-grid {
+        grid-template-columns: 1fr;
+        padding: 25px;
+      }
+      .product-media img {
+        height: 380px;
+      }
+      .action-buttons {
+        flex-direction: column;
+      }
     }
   </style>
 </head>
@@ -97,69 +347,79 @@
   </div>
   <nav class="nav-links">
     <a href="index.html">Home</a>
-    <a href="cart.html">Cart</a>
+    <a href="cart.html">Cart (<span id="cart-count">0</span>)</a>
   </nav>
 </header>
 
-<section class="product-detail">
-  <img src="images/Denim Tapered.jpg" alt="Denim Tapered Jeans">
-
-  <div class="product-info">
-    <h2>Denim Tapered</h2>
-    <div class="star-rating" style="--rating: 90%;"></div>
-    <p>Designed for comfort and style, these jeans are roomy at the hips and narrow at the ankle — the perfect balance for a flattering fit.</p>
-
-    <label for="size">Select Size:</label>
-    <select id="size">
-      <option>S</option>
-      <option>M</option>
-      <option>L</option>
-      <option>XL</option>
-    </select>
-
-    <label>Select Color:</label>
-    <div class="color-options">
-      <span class="color-circle selected" data-color="Dark Blue" style="background: #1e2a47;"></span>
-      <span class="color-circle" data-color="Faded Grey" style="background: #999;"></span>
-      <span class="color-circle" data-color="Indigo" style="background: indigo;"></span>
+<main class="product-detail-section">
+  <div class="product-grid">
+    
+    <!-- High-Res Match Image with Local Image Fallback -->
+    <div class="product-media">
+      <span class="badge-trending">⚡ Everyday Essential</span>
+      <img id="productMainImage" src="images/Denim Tapered.jpg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1541099649105-f69ad21f3246?auto=format&fit=crop&w=800&q=80';" alt="Denim Tapered Jeans">
     </div>
-    <input type="hidden" id="color" value="Dark Blue">
 
-    <label for="qty">Quantity:</label>
-    <select id="qty">
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-    </select>
+    <!-- Product Information -->
+    <div class="product-info">
+      <h1 id="productTitle">Denim Tapered Jeans</h1>
+      
+      <div class="product-price-row">
+        <span class="current-price">₹2,499</span>
+      </div>
 
-    <button class="buy-now-btn" onclick="buyNow()">Buy Now via WhatsApp</button>
+      <div class="rating-row">
+        ★★★★★ <span>4.9 (98 Customer Reviews)</span>
+      </div>
+
+      <p class="product-desc">
+        Designed for optimal comfort and effortless daily style, these jeans offer a relaxed fit around the hips with a modern taper down to the ankle — providing the perfect balanced fit.
+      </p>
+
+      <!-- Size Selection -->
+      <div class="option-group">
+        <label for="size">Select Size</label>
+        <select id="size" class="custom-select">
+          <option value="S">S</option>
+          <option value="M" selected>M</option>
+          <option value="L">L</option>
+          <option value="XL">XL</option>
+        </select>
+      </div>
+
+      <!-- Color Swatches -->
+      <div class="option-group">
+        <label>Select Color</label>
+        <div class="color-swatches">
+          <span class="color-circle selected" data-color="Dark Blue" style="background: #1e2a47;"></span>
+          <span class="color-circle" data-color="Faded Grey" style="background: #6b7280;"></span>
+          <span class="color-circle" data-color="Indigo" style="background: #4b0082;"></span>
+        </div>
+        <input type="hidden" id="color" value="Dark Blue">
+      </div>
+
+      <!-- Quantity Selection -->
+      <div class="option-group">
+        <label for="qty">Quantity</label>
+        <select id="qty" class="custom-select">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+        </select>
+      </div>
+
+      <!-- Buttons -->
+      <div class="action-buttons">
+        <button class="btn-add-cart" onclick="addCurrentToCart()">Add To Cart</button>
+        <button class="btn-whatsapp" onclick="buyNow()">Buy via WhatsApp</button>
+      </div>
+
+    </div>
   </div>
-</section>
+</main>
 
-<script>
-  document.querySelectorAll('.color-circle').forEach(circle => {
-    circle.addEventListener('click', () => {
-      document.querySelectorAll('.color-circle').forEach(c => c.classList.remove('selected'));
-      circle.classList.add('selected');
-      document.getElementById('color').value = circle.getAttribute('data-color');
-    });
-  });
-
-  function buyNow() {
-    const size = document.getElementById('size').value;
-    const color = document.getElementById('color').value;
-    const qty = document.getElementById('qty').value;
-
-    const message = `Hi BlueAura, I want to buy:\n\nProduct: Denim Tapered Jeans\nSize: ${size}\nColor: ${color}\nQuantity: ${qty}`;
-    const phone = "919561461687";
-    const whatsappURL = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
-
-    window.open(whatsappURL, "_blank");
-  }
-</script>
-
-
+<!-- Customer Reviews Section -->
 <section class="review-carousel">
   <h3>Customer Reviews</h3>
   <div class="carousel-container">
@@ -182,7 +442,100 @@
   </div>
 </section>
 
+<!-- Related Products -->
+<section class="related-products">
+  <h3>You May Also Like</h3>
+  <div class="related-grid">
+    <div class="related-item">
+      <a href="product-bootcut-jeans.html">
+        <img src="images/Bootcut-Jeans.jpg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1582552938357-32b906df40cb?auto=format&fit=crop&w=600&q=80';" alt="Bootcut Jeans">
+        <p>Bootcut Jeans</p>
+      </a>
+    </div>
+
+    <div class="related-item">
+      <a href="product-uniqlo-wide.html">
+        <img src="images/Uniqlo Wide.jpg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1560243563-062bfc001d68?auto=format&fit=crop&w=600&q=80';" alt="Uniqlo Wide">
+        <p>Uniqlo Wide</p>
+      </a>
+    </div>
+
+    <div class="related-item">
+      <a href="product-ripped-jeans.html">
+        <img src="images/be117b9b-ef4c-4640-b4ae-a79c797d3cb9.jpg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1511105612320-2e62a04dd044?auto=format&fit=crop&w=600&q=80';" alt="Ripped Jeans">
+        <p>Ripped Jeans</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="site-footer">
+  <div class="footer-content">
+    <p class="footer-brand">BlueAura</p>
+    <nav class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="#products">Products</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <p class="footer-copy">© 2026 BlueAura. Designed by Sanjana Rembersu.</p>
+  </div>
+</footer>
+
+<!-- Page Logic & Cart Integration Script -->
 <script>
+  // Color Swatch Selection
+  document.querySelectorAll('.color-circle').forEach(circle => {
+    circle.addEventListener('click', () => {
+      document.querySelectorAll('.color-circle').forEach(c => c.classList.remove('selected'));
+      circle.classList.add('selected');
+      document.getElementById('color').value = circle.getAttribute('data-color');
+    });
+  });
+
+  // WhatsApp Quick Order
+  function buyNow() {
+    const size = document.getElementById('size').value;
+    const color = document.getElementById('color').value;
+    const qty = document.getElementById('qty').value;
+
+    const message = `Hi BlueAura, I want to buy:\n\nProduct: Denim Tapered Jeans\nSize: ${size}\nColor: ${color}\nQuantity: ${qty}`;
+    const phone = "919561461687";
+    const whatsappURL = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+
+    window.open(whatsappURL, "_blank");
+  }
+
+  // Add to Local Storage Cart
+  function addCurrentToCart() {
+    const size = document.getElementById('size').value;
+    const color = document.getElementById('color').value;
+    const qty = parseInt(document.getElementById('qty').value, 10);
+    const img = document.getElementById('productMainImage').src;
+
+    let cart = JSON.parse(localStorage.getItem('cart') || '[]');
+    cart.push({
+      name: 'Denim Tapered Jeans',
+      price: '₹2,499',
+      image: img,
+      size: size,
+      color: color,
+      quantity: qty
+    });
+
+    localStorage.setItem('cart', JSON.stringify(cart));
+    updateCartCount();
+    alert(`🛒 Added ${qty} × Denim Tapered Jeans (${size}, ${color}) to your cart!`);
+  }
+
+  function updateCartCount() {
+    let cart = JSON.parse(localStorage.getItem('cart') || '[]');
+    const countEl = document.getElementById('cart-count');
+    if (countEl) countEl.innerText = cart.length;
+  }
+
+  // Reviews Carousel Logic
   const track = document.querySelector('.carousel-track');
   const slides = document.querySelectorAll('.carousel-slide');
   const nextBtn = document.querySelector('.carousel-btn.next');
@@ -191,6 +544,7 @@
   let currentIndex = 0;
 
   function updateCarousel() {
+    if (!track || !slides.length) return;
     const slideWidth = slides[0].offsetWidth;
     track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
   }
@@ -207,49 +561,10 @@
     });
 
     window.addEventListener('resize', updateCarousel);
-    updateCarousel();
-  } else {
-    console.warn("Carousel elements not found. Check class names and order.");
   }
+
+  document.addEventListener('DOMContentLoaded', updateCartCount);
 </script>
-
-<section class="related-products">
-  <h3>You May Also Like</h3>
-  <div class="related-grid">
-    <div class="related-item">
-      <a href="product-bootcut-jeans.html">
-        <img src="images/Bootcut-Jeans.jpg" alt="Bootcut Jeans">
-        <p>Bootcut Jeans</p>
-      </a>
-    </div>
-
-    <div class="related-item">
-      <a href="product-uniqlo-wide.html">
-        <img src="images/Uniqlo Wide.jpg" alt="Uniqlo Wide">
-        <p>Uniqlo Wide</p>
-      </a>
-    </div>
-
-    <div class="related-item">
-      <a href="product-ripped-jeans.html">
-        <img src="images/be117b9b-ef4c-4640-b4ae-a79c797d3cb9.jpg" alt="Ripped Jeans">
-        <p>Ripped Jeans</p>
-      </a>
-    </div>
-  </div>
-</section>
-<footer class="site-footer">
-  <div class="footer-content">
-    <p class="footer-brand">BlueAura</p>
-    <nav class="footer-links">
-      <a href="index.html">Home</a>
-      <a href="#products">Products</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
-    </nav>
-    <p class="footer-copy">© 2025 BlueAura. Designed by Sanjana Rembersu.</p>
-  </div>
-</footer>
 
 </body>
 </html>
